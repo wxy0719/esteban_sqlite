@@ -1,0 +1,71 @@
+﻿doctype html
+html
+  head
+    title
+    meta(charset='UTF-8')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    script(type='text/javascript', src='/javascripts/jquery-1.7.2.min.js')
+  body
+    nav#navHeader_.header
+      ul.list
+        li.logo
+          a(href='/') 111
+        li
+          a#ywbl(href='javascript:void(0);', levelnum='3') 业务办理
+          #ywbl_div(style='width:88px;display:none;')
+            div(style='height:55px;width:88px;float:left;')
+              a 洗车
+            div(style='height:55px;width:88px;float:left;')
+              a 充值
+            div(style='height:55px;width:88px;float:left;')
+              a 信息变更
+        li
+          a#xtgl(href='javascript:void(0);', levelnum='4') 系统管理
+          #xtgl_div(style='width:88px;display:none;')
+            div(style='height:55px;width:88px;float:left;')
+              a 材料采购
+            div(style='height:55px;width:88px;float:left;')
+              a 日报
+            div(style='height:55px;width:88px;float:left;')
+              a 月报
+            div(style='height:55px;width:88px;float:left;')
+              a 其他开支
+        li
+          a#hyzc(href='/reg') 注册会员
+        li
+          a#hyzc(href='/login') 登录
+        li
+          a#hyzc(href='/listUser') 数据列表
+    div.container
+      block content
+      footer.footer
+        p
+          a(href='http://myzhibie.coding.io') myzhibie
+          | @2015
+  script.
+    $(document).off("hover", ".header #ywbl");
+    $(document).on("hover", ".header #ywbl", function(){
+    var levelNum=$(this).attr("levelNum");
+    $("#navHeader_").height(levelNum*55+80);
+    $("#ywbl_div").show();
+    $("#xtgl_div").hide();
+    });
+    $(document).off("hover", ".header #xtgl");
+    $(document).on("hover", ".header #xtgl", function(){
+    var levelNum=$(this).attr("levelNum");
+    $("#navHeader_").height(levelNum*55+80);
+    $("#ywbl_div").hide();
+    $("#xtgl_div").show();
+    });
+    $(document).off("hover", ".header #hyzc");
+    $(document).on("hover", ".header #hyzc", function(){
+    $("#navHeader_").height(60);
+    $("#ywbl_div").hide();
+    $("#xtgl_div").hide();
+    });
+    $(document).off("mouseleave", "#navHeader_");
+    $(document).on("mouseleave", "#navHeader_", function(){
+    $("#navHeader_").height(60);
+    $("#ywbl_div").hide();
+    $("#xtgl_div").hide();
+    });
